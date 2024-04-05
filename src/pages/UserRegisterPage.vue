@@ -15,7 +15,11 @@
                   </div>
                 </div>
               </div>
-              <q-form class="q-gutter-md" @submit.prevent="submitForm" ref="myForm">
+              <q-form
+                class="q-gutter-md"
+                @submit.prevent="submitForm"
+                ref="myForm"
+              >
                 <q-input
                   v-model="email"
                   :rules="[rules.required]"
@@ -69,55 +73,38 @@
     </div>
   </q-card>
 </template>
-<script>
+
+<script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { api } from "src/boot/authService";
 import rules from "src/support/rules/fieldRules";
 
-export default {
-  setup() {
-    const email = ref("");
-    const password = ref("");
-    const password2 = ref("");
-    const router = useRouter();
-    const myForm = ref(null);
+const email = ref("");
+const password = ref("");
+const password2 = ref("");
+const router = useRouter();
+const myForm = ref(null);
 
-    const submitForm = async () => {
-      myForm.value.validate().then(async (success) => {
-        if (success) {
-          console.log("Teste de envio");
-          const formData = {
-            email: email.value,
-            password: password.value,
-          };
-          try {
-            const response = await api.post("/api/v1/users/", formData);
-            console.log(response);
-            router.push({ name: "login" });
-          } catch (error) {
-            console.error(error);
-          }
-        } else {
-          console.log("Formulário inválido");
-        }
-      });
-    };
-
-    // to reset validations:
-    const resetForm = () => {
-      myForm.value.resetValidation();
-    };
-
-    return {
-      email,
-      password,
-      password2,
-      submitForm,
-      rules,
-      myForm,
-      resetForm,
-    };
-  },
+const submitForm = async () => {
+  myForm.value.validate().then(async (success) => {
+    if (success) {
+      console.log("Teste de envio");
+      const formData = {
+        email: email.value,
+        password: password.value,
+      };
+      try {
+        const response = await api.post("/api/v1/users/", formData);
+        console.log(response);
+        router.push({ name: "login" });
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      console.log("Formulário inválido");
+    }
+  });
 };
+
 </script>
