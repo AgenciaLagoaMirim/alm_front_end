@@ -2,15 +2,18 @@ const routes = [
   {
     path: "/dash-board",
     component: () => import("layouts/MainLayout.vue"),
-    children: [{ path: "", component: () => import("pages/IndexPage.vue") }],
+    children: [{ path: "", component: () => import("pages/IndexPage.vue"), name: "dash-board" }],
+    meta: {
+      requiredLogin: true,
+    },
   },
   {
-    path: "/",
+    path: "/register",
     component: () => import("src/pages/UserRegisterPage.vue"),
     name: "register",
   },
   {
-    path: "/login",
+    path: "/",
     component: () => import("src/pages/UserLoginPage.vue"),
     name: "login",
   },

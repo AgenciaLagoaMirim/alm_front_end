@@ -63,6 +63,12 @@
                         >aqui!</router-link
                       >
                     </div>
+                    <div class="q-mt-sm">
+                      Já possui cadastro? Clique
+                      <router-link class="text-primary" to="/"
+                        >aqui!</router-link
+                      >
+                    </div>
                   </div>
                 </div>
               </q-form>
@@ -95,8 +101,7 @@ const submitForm = async () => {
         password: password.value,
       };
       try {
-        const response = await api.post("/api/v1/users/", formData);
-        console.log(response);
+        await api.post("/api/v1/users/", formData);
         router.push({ name: "login" });
       } catch (error) {
         console.error(error);

@@ -12,10 +12,12 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          ALM - Data Dash System
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <div>
+          <log-out-button :label="userLabel"></log-out-button>
+        </div>
       </q-toolbar>
     </q-header>
 
@@ -48,10 +50,14 @@
 <script setup>
 import { ref } from 'vue'
 import EssentialLink from 'components/EssentialLink.vue'
-
+import LogOutButton from 'components/button/LogOutButton.vue'
+import useAuthStore from "src/stores/userAuth";
 defineOptions({
   name: 'MainLayout'
 })
+
+const authStore = useAuthStore();
+const userLabel = authStore.userEmail
 
 const linksList = [
   {
