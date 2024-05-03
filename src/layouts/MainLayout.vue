@@ -16,7 +16,7 @@
         </q-toolbar-title>
 
         <div>
-          <log-out-button :label="userLabel"></log-out-button>
+          <log-out-button-component :label="userLabel"></log-out-button-component>
         </div>
       </q-toolbar>
     </q-header>
@@ -27,12 +27,6 @@
       bordered
     >
       <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
-
         <EssentialLink
           v-for="link in linksList"
           :key="link.title"
@@ -50,7 +44,7 @@
 <script setup>
 import { ref } from 'vue'
 import EssentialLink from 'components/EssentialLink.vue'
-import LogOutButton from 'components/button/LogOutButton.vue'
+import LogOutButtonComponent from 'src/components/button/LogOutButtonComponent.vue'
 import useAuthStore from "src/stores/userAuth";
 defineOptions({
   name: 'MainLayout'

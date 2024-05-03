@@ -1,1 +1,10 @@
 // app global css in SCSS form
+.row {
+  #column-stations {
+    border: 1px solid black; // Adiciona uma borda à direita da coluna-1
+    // Outros estilos para coluna-1 aqui
+  }
+  #column-data-readings {
+    border: 1px solid black;
+}
+}

@@ -22,7 +22,7 @@ const authStore = useAuthStore();
 const router = useRouter();
 
 defineOptions({
-  name: "LogOutButton",
+  name: "LogOutButtonComponent",
 });
 
 const props = defineProps({
